@@ -1,15 +1,24 @@
 -- not_min_tabs.lua
 
--- Lua script for Notion aiming to hide the tab bar of frames not using the
--- styles "floating" or "transient".
+-- Lua script for Notion aiming to hide the tab bar of frames that are not using
+-- the styles "floating" or "transient".
 
 -- Copyright 2012 Lukas Waymann <lb.waym@gmail.com>
 
--- This software is released under the terms of the MIT license. For more
--- information, see http://opensource.org/licenses/MIT
+-- This program is free software: you can redistribute it and/or modify it under
+-- the terms of the GNU Lesser General Public License as published by the Free
+-- Software Foundation, either version 3 of the License, or (at your option) any
+-- later version.
 
--- Enable this by adding dopath("not_min_tabs") to (e.g.) your cfg_notion.lua
--- and defining adapted "-alt" styles in your "look_something.lua" (usually
+-- For a copy of the GNU Lesser General Public License, see
+-- <http://www.gnu.org/licenses/>
+
+-- Compared to the original min_tabs.lua script, this version does not define a
+-- keybinding, works for the sratchpad and covers some problems arising when
+-- exiting Notion without closing all client windows first.
+
+-- Enable by adding dopath("not_min_tabs") to (e.g.) your cfg_notion.lua and
+-- defining adapted "-alt" styles in your "look_something.lua" (usually
 -- "frame-tiled-alt" with the argument "bar = "none"").
 
 function hide_tabs(fr)  -- fr must be a WFrame.
@@ -27,7 +36,7 @@ end
 
 function reconsider_tabs(fr)
     -- This Should leave us with "tiled" frames, "unknown" frames and their
-   -- respective "-alt" variants.
+	 -- respective "-alt" variants.
     if fr:mode() == "floating" or fr:mode() == "transient" then
         return
     end
