@@ -62,7 +62,7 @@ end
 local function get_inetaddr_ifcfg()
 	local inetaddr
 	local st,en,iface = string.find(tostring(get_iface_proc()), '(%w+):')
-	local f = io.popen("/sbin/ifconfig " .. iface)
+	local f = io.popen("LANG=C /sbin/ifconfig " .. iface)
 	if not f then
 		inetaddr=""
 	else
